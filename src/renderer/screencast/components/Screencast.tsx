@@ -5,11 +5,13 @@ import Style from './Screencast.module.scss'
 import endWith from 'licia/endWith'
 import { LoadingBar } from 'share/renderer/components/loading'
 import { installPackages } from '../../lib/util'
+import { t } from 'common/util'
 
 export default observer(function Screencast() {
   const { device, scrcpyClient } = store
   const screenContainerRef = useRef<HTMLDivElement>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [showTip, setShowTip] = useState(false)
 
   useEffect(() => {
     preload.setTitle(device.name)
@@ -19,6 +21,8 @@ export default observer(function Screencast() {
       video.stream.pipeTo(video.decoder.writable)
       screenContainerRef.current!.appendChild(video.decoder.renderer.element)
       setIsLoading(false)
+      setShowTip(true)
+      setTimeout(() => setShowTip(false), 5000)
     }
     start()
 
@@ -48,6 +52,9 @@ export default observer(function Screencast() {
       onDragOver={(e) => e.preventDefault()}
     >
       {isLoading && <LoadingBar />}
+      {showTip && (
+        <div className={Style.tip}>{t('keyboardControlTip')}</div>
+      )}
     </div>
   )
 })

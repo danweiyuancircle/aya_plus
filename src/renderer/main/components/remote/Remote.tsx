@@ -19,12 +19,6 @@ const TV_KEY = {
   Digit9: 16,
   Menu: 82,
   Mute: 164,
-  MediaPlayPause: 85,
-  MediaStop: 86,
-  MediaNext: 87,
-  MediaPrevious: 88,
-  MediaRewind: 89,
-  MediaFastForward: 90,
   ChannelUp: 166,
   ChannelDown: 167,
   Guide: 172,
@@ -263,59 +257,6 @@ export default observer(function Remote() {
           onClick={inputKey(TV_KEY.Menu)}
         >
           {t('menu')}
-        </button>
-      </div>
-
-      <div className={Style.mediaRow}>
-        <button
-          className={Style.mediaBtn}
-          disabled={disabled}
-          title={t('rewind')}
-          onClick={inputKey(TV_KEY.MediaRewind)}
-        >
-          &#x23EA;
-        </button>
-        <button
-          className={Style.mediaBtn}
-          disabled={disabled}
-          title={t('playPause')}
-          onClick={inputKey(TV_KEY.MediaPlayPause)}
-        >
-          <span className="icon-play" />
-        </button>
-        <button
-          className={Style.mediaBtn}
-          disabled={disabled}
-          title={t('stop')}
-          onClick={inputKey(TV_KEY.MediaStop)}
-        >
-          &#x23F9;
-        </button>
-        <button
-          className={Style.mediaBtn}
-          disabled={disabled}
-          title={t('fastForward')}
-          onClick={inputKey(TV_KEY.MediaFastForward)}
-        >
-          &#x23E9;
-        </button>
-      </div>
-      <div className={Style.mediaRow}>
-        <button
-          className={Style.mediaBtn}
-          disabled={disabled}
-          title={t('previous')}
-          onClick={inputKey(TV_KEY.MediaPrevious)}
-        >
-          &#x23EE;
-        </button>
-        <button
-          className={Style.mediaBtn}
-          disabled={disabled}
-          title={t('next')}
-          onClick={inputKey(TV_KEY.MediaNext)}
-        >
-          &#x23ED;
         </button>
       </div>
     </>

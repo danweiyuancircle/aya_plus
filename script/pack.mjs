@@ -1,4 +1,4 @@
-import builder, { publish } from 'electron-builder'
+import builder, { Platform, Arch } from 'electron-builder'
 import isMac from 'licia/isMac.js'
 import isWindows from 'licia/isWindows.js'
 
@@ -100,6 +100,13 @@ if (isWindows) {
   }
 }
 
-await builder.build({
-  config,
-})
+const args = process.argv.slice(2)
+const buildOptions = { config }
+
+if (args.includes('--win')) {
+  buildOptions.targets = Platform.WINDOWS.createTarget('nsis', Arch.x64)
+} else if (args.includes('--linux')) {
+  buildOptions.targets = Platform.LINUX.createTarget('AppImage', Arch.x64)
+}
+
+await builder.build(buildOptions)

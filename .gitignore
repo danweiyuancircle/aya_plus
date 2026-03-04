@@ -11,3 +11,4 @@ server/**/build/
 local.properties
 
 build/*.provisionprofile
+.claude/

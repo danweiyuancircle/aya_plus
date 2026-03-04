@@ -157,6 +157,7 @@
   "offline": "Offline",
   "useLocalInspector": "Use Local Inspector",
   "inputText": "Input Text",
+  "keyboardControlTip": "Tip: Use your computer keyboard to control the TV",
   "screenRecording": "Screen Recording",
   "wirelessMode": "Wireless Mode",
   "deviceNotSelected": "Device not selected",

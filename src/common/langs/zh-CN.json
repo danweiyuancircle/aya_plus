@@ -157,6 +157,7 @@
   "offline": "离线",
   "useLocalInspector": "使用本地调试器",
   "inputText": "输入文本",
+  "keyboardControlTip": "提示：可使用电脑键盘控制TV端",
   "screenRecording": "录屏",
   "wirelessMode": "无线模式",
   "deviceNotSelected": "未选择设备",

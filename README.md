@@ -14,6 +14,17 @@ An enhanced fork of [AYA](https://github.com/liriliri/aya) — Android ADB deskt
 
 ## New in AYAPlus
 
+<table>
+  <tr>
+    <td><img src="screencap/remote.png" width="100%"></td>
+    <td><img src="screencap/mirror.png" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center">TV Remote</td>
+    <td align="center">Screencast Keyboard Input</td>
+  </tr>
+</table>
+
 * **Screencast keyboard input**: Full keyboard support during screen mirroring — letters, digits, arrow keys, ESC (as Back), F1–F12, Tab, and more.
 * **Logcat keyword filter**: Filter logcat output by keywords for easier debugging.
 * **Status bar app actions**: Quick actions accessible from the status bar.
