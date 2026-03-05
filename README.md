@@ -46,14 +46,14 @@
 
 ## 下载
 
-| 平台 | 格式 |
-|------|------|
-| macOS (Intel) | `.dmg` |
-| macOS (Apple Silicon) | `.dmg` |
-| Windows | `.exe` |
-| Linux | `.AppImage` |
+| 平台 | 文件名 |
+|------|--------|
+| macOS (Intel) | `AYAPlus-x.x.x-mac-x64.dmg` |
+| macOS (Apple Silicon) | `AYAPlus-x.x.x-mac-arm64.dmg` |
+| Windows | `AYAPlus-x.x.x-win-x64.exe` |
+| Linux | `AYAPlus-x.x.x-linux-x64.AppImage` |
 
-从 [GitHub Releases](https://github.com/danweiyuancircle/aya_plus/releases) 下载最新版本。
+从 [GitHub Releases](https://github.com/danweiyuancircle/aya_plus/releases) 下载。
 
 ## 致谢
 
