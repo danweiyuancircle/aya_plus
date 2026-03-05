@@ -65,6 +65,10 @@ function renderApp() {
       App = lazy(() => import('./avd/App.js') as Promise<any>)
       title = t('avdManager')
       break
+    case 'remote':
+      App = lazy(() => import('./remote/App.js') as Promise<any>)
+      title = t('remoteController')
+      break
     case 'about':
       App = lazy(() => import('share/renderer/about/App.js') as Promise<any>)
       title = t('aboutAya')

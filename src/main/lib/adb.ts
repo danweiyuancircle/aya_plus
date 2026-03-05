@@ -140,6 +140,19 @@ async function setFontScale(deviceId: string, scale: number) {
   await shell(deviceId, `settings put system font_scale ${scale}`)
 }
 
+async function getHttpProxy(deviceId: string) {
+  const result = await shell(deviceId, 'settings get global http_proxy')
+  return result === 'null' ? '' : trim(result)
+}
+
+async function setHttpProxy(deviceId: string, proxy: string) {
+  if (proxy) {
+    await shell(deviceId, `settings put global http_proxy ${proxy}`)
+  } else {
+    await shell(deviceId, 'settings put global http_proxy :0')
+  }
+}
+
 function getMarketName(properties: types.PlainObj<string>) {
   const keys = [
     // Oppo
@@ -433,4 +446,6 @@ export async function init() {
   handleEvent('startWireless', startWireless)
   handleEvent('restartAdbServer', restartAdbServer)
   handleEvent('pairDevice', pairDevice)
+  handleEvent('getHttpProxy', getHttpProxy)
+  handleEvent('setHttpProxy', setHttpProxy)
 }

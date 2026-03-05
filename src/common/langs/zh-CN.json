@@ -194,5 +194,12 @@
   "previous": "上一个",
   "next": "下一个",
   "float": "悬浮",
-  "keyword": "关键词"
+  "keyword": "关键词",
+  "httpProxy": "HTTP 代理",
+  "currentProxy": "当前代理",
+  "noProxy": "未设置",
+  "setProxy": "设置",
+  "clearProxy": "清除",
+  "proxySet": "代理已设置",
+  "proxyCleared": "代理已清除"
 }

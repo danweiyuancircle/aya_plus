@@ -231,5 +231,12 @@
   "previous": "Предыдущий",
   "next": "Следующий",
   "float": "Плавающее",
-  "keyword": "Ключевое слово"
+  "keyword": "Ключевое слово",
+  "httpProxy": "HTTP Прокси",
+  "currentProxy": "Текущий прокси",
+  "noProxy": "Не задан",
+  "setProxy": "Установить",
+  "clearProxy": "Очистить",
+  "proxySet": "Прокси установлен",
+  "proxyCleared": "Прокси удалён"
 }

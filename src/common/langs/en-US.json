@@ -194,5 +194,12 @@
   "previous": "Previous",
   "next": "Next",
   "float": "Float",
-  "keyword": "Keyword"
+  "keyword": "Keyword",
+  "httpProxy": "HTTP Proxy",
+  "currentProxy": "Current Proxy",
+  "noProxy": "Not Set",
+  "setProxy": "Set",
+  "clearProxy": "Clear",
+  "proxySet": "Proxy set",
+  "proxyCleared": "Proxy cleared"
 }

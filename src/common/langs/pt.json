@@ -230,5 +230,12 @@
   "previous": "Anterior",
   "next": "Próximo",
   "float": "Flutuante",
-  "keyword": "Palavra-chave"
+  "keyword": "Palavra-chave",
+  "httpProxy": "Proxy HTTP",
+  "currentProxy": "Proxy atual",
+  "noProxy": "Não definido",
+  "setProxy": "Definir",
+  "clearProxy": "Limpar",
+  "proxySet": "Proxy definido",
+  "proxyCleared": "Proxy removido"
 }

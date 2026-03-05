@@ -18,7 +18,6 @@ export default observer(function Panels() {
       'screenshot',
       'logcat',
       'webview',
-      'tvRemote',
     ],
     (panel) => {
       return (

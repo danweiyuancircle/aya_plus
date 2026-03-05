@@ -58,7 +58,7 @@ class Store extends BaseStore {
   }
   private async init() {
     const panel = await main.getMainStore('panel')
-    if (panel) {
+    if (panel && panel !== 'tvRemote') {
       runInAction(() => (this.panel = panel))
     }
 

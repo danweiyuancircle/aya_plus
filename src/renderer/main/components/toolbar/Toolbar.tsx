@@ -1,6 +1,7 @@
 import Device from './Device'
 import Tabs from './Tabs'
 import Settings from './Settings'
+import Actions from './Actions'
 import Style from './Toolbar.module.scss'
 
 export default function Toolbar() {
@@ -8,6 +9,7 @@ export default function Toolbar() {
     <div className={Style.container}>
       <Device />
       <Tabs />
+      <Actions />
       <Settings />
     </div>
   )

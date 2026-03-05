@@ -228,5 +228,12 @@
   "previous": "上一個",
   "next": "下一個",
   "float": "懸浮",
-  "keyword": "關鍵詞"
+  "keyword": "關鍵詞",
+  "httpProxy": "HTTP 代理",
+  "currentProxy": "當前代理",
+  "noProxy": "未設置",
+  "setProxy": "設置",
+  "clearProxy": "清除",
+  "proxySet": "代理已設置",
+  "proxyCleared": "代理已清除"
 }

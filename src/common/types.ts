@@ -176,3 +176,8 @@ export type IpcGetFileUrl = (
   path: string,
   port?: number
 ) => Promise<string>
+export type IpcGetHttpProxy = (deviceId: string) => Promise<string>
+export type IpcSetHttpProxy = (
+  deviceId: string,
+  proxy: string
+) => Promise<void>

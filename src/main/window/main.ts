@@ -4,6 +4,7 @@ import { getOpenFileFromArgv, handleEvent } from 'share/main/lib/util'
 import * as window from 'share/main/lib/window'
 import * as screencast from './screencast'
 import * as devices from './devices'
+import * as remote from './remote'
 import log from 'share/common/log'
 import once from 'licia/once'
 import { IpcGetStore, IpcSetStore } from 'share/common/types'
@@ -76,6 +77,7 @@ const initIpc = once(() => {
     screencast.showWin()
   })
   handleEvent('showDevices', () => devices.showWin())
+  handleEvent('toggleRemote', () => remote.toggleWin())
   if (isMac) {
     app.on('open-file', (_, path) => {
       if (!endWith(path, '.apk')) {

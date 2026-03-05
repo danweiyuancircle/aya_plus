@@ -13,14 +13,8 @@ import className from 'licia/className'
 import FontAdjustModal from './FontAdjustModal'
 import LunaToolbar, { LunaToolbarSpace } from 'luna-toolbar/react'
 import ToolbarIcon from 'share/renderer/components/ToolbarIcon'
-import PortMappingModal from './PortMappingModal'
-import RemoteControllerModal from './RemoteControllerModal'
-import toBool from 'licia/toBool'
 
 export default observer(function Overview() {
-  const [portModalVisible, setPortModalVisible] = useState(false)
-  const [remoteControllerModalVisible, setRemoteControllerModalVisible] =
-    useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [overview, setOverview] = useState<
     types.PlainObj<string | number | boolean>
@@ -130,55 +124,9 @@ export default observer(function Overview() {
     )
   }
 
-  async function root() {
-    if (!device || overview.root) {
-      return
-    }
-    try {
-      await main.root(device.id)
-      setTimeout(() => refresh(), 2000)
-    } catch {
-      notify(t('rootModeErr'), { icon: 'error' })
-    }
-  }
-
-  async function restartAdbServer() {
-    await main.restartAdbServer()
-    notify(t('adbServerRestarted'), { icon: 'success' })
-  }
-
   return (
     <div className={className('panel-with-toolbar', Style.container)}>
       <LunaToolbar className="panel-toolbar">
-        <ToolbarIcon
-          icon="terminal"
-          title={t('adbCli')}
-          onClick={() => main.openAdbCli()}
-        />
-        <ToolbarIcon
-          icon="reset"
-          title={t('restartAdbServer')}
-          onClick={restartAdbServer}
-        />
-        <ToolbarIcon
-          icon="unlock"
-          disabled={!device || toBool(overview.root)}
-          state={toBool(overview.root) ? 'active' : ''}
-          title={t('rootMode')}
-          onClick={root}
-        />
-        <ToolbarIcon
-          icon="bidirection"
-          disabled={!device}
-          title={t('portMapping')}
-          onClick={() => setPortModalVisible(true)}
-        />
-        <ToolbarIcon
-          icon="remote-controller"
-          disabled={!device}
-          title={t('remoteController')}
-          onClick={() => setRemoteControllerModalVisible(true)}
-        />
         <LunaToolbarSpace />
         <ToolbarIcon
           icon="refresh"
@@ -188,14 +136,6 @@ export default observer(function Overview() {
         />
       </LunaToolbar>
       {content}
-      <PortMappingModal
-        visible={portModalVisible}
-        onClose={() => setPortModalVisible(false)}
-      />
-      <RemoteControllerModal
-        visible={remoteControllerModalVisible}
-        onClose={() => setRemoteControllerModalVisible(false)}
-      />
     </div>
   )
 })

@@ -1,0 +1,31 @@
+.container {
+  padding: 10px;
+}
+
+.status {
+  padding: 0 0 10px;
+  font-size: 13px;
+}
+
+.label {
+  color: var(--color-text-secondary);
+  margin-right: 5px;
+}
+
+.value {
+  font-family: monospace;
+}
+
+.toolbar {
+  border-top: 1px solid var(--color-border);
+  padding-top: 8px;
+  height: auto;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.input {
+  input {
+    width: 180px;
+  }
+}

@@ -230,5 +230,12 @@
   "previous": "Önceki",
   "next": "Sonraki",
   "float": "Yüzen",
-  "keyword": "Anahtar kelime"
+  "keyword": "Anahtar kelime",
+  "httpProxy": "HTTP Proxy",
+  "currentProxy": "Mevcut Proxy",
+  "noProxy": "Ayarlanmadı",
+  "setProxy": "Ayarla",
+  "clearProxy": "Temizle",
+  "proxySet": "Proxy ayarlandı",
+  "proxyCleared": "Proxy temizlendi"
 }

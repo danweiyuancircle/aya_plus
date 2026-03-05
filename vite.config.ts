@@ -35,7 +35,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
     },
     server: {
       hmr: false,
-      port: 8080,
+      port: 9000,
     },
     define: {
       PRODUCT_NAME: JSON.stringify(pkg.productName),

@@ -71,6 +71,7 @@ export default Object.assign(mainObj, {
   closeScreencast: invoke('closeScreencast'),
   restartScreencast: invoke('restartScreencast'),
   showDevices: invoke('showDevices'),
+  toggleRemote: invoke('toggleRemote'),
   getOverview: invoke('getOverview'),
   setFontScale: invoke('setFontScale'),
   getPerformance: invoke('getPerformance'),
@@ -126,5 +127,7 @@ export default Object.assign(mainObj, {
   wipeAvdData: invoke<IpcWipeAvdData>('wipeAvdData'),
   restartAdbServer: invoke('restartAdbServer'),
   pairDevice: invoke<IpcPairDevice>('pairDevice'),
+  getHttpProxy: invoke('getHttpProxy'),
+  setHttpProxy: invoke('setHttpProxy'),
   getFileUrl: invoke<IpcGetFileUrl>('getFileUrl'),
 })
