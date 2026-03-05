@@ -37,6 +37,18 @@
   white-space: nowrap;
 }
 
+.proxy {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  padding: 0 6px;
+  border-radius: 3px;
+  background: var(--color-warning-bg, rgba(250, 173, 20, 0.15));
+  color: var(--color-warning-text, #faad14);
+  font-weight: 500;
+}
+
 .actions {
   display: inline-flex;
   gap: 2px;

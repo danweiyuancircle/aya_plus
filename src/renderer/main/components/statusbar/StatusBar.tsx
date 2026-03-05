@@ -13,6 +13,7 @@ interface IDeviceInfo {
 export default observer(function StatusBar() {
   const [activity, setActivity] = useState({ packageName: '', activityName: '' })
   const [deviceInfo, setDeviceInfo] = useState<IDeviceInfo | null>(null)
+  const [proxy, setProxy] = useState('')
   const timerRef = useRef<ReturnType<typeof setInterval>>()
 
   const device = store.device
@@ -20,6 +21,7 @@ export default observer(function StatusBar() {
   useEffect(() => {
     setDeviceInfo(null)
     setActivity({ packageName: '', activityName: '' })
+    setProxy('')
 
     if (!device) return
 
@@ -29,6 +31,10 @@ export default observer(function StatusBar() {
         ip: overview.ip || '',
         androidVersion: device.androidVersion || '',
       })
+    })
+
+    main.getHttpProxy(device.id).then((result: string) => {
+      setProxy(result || '')
     })
   }, [device])
 
@@ -44,8 +50,20 @@ export default observer(function StatusBar() {
       }
     }
 
+    async function fetchProxy() {
+      try {
+        const result = await main.getHttpProxy(device!.id)
+        setProxy(result || '')
+      } catch {
+        // ignore
+      }
+    }
+
     fetchActivity()
-    timerRef.current = setInterval(fetchActivity, 3000)
+    timerRef.current = setInterval(() => {
+      fetchActivity()
+      fetchProxy()
+    }, 3000)
 
     return () => {
       clearInterval(timerRef.current)
@@ -108,6 +126,12 @@ export default observer(function StatusBar() {
       </div>
       {deviceInfo && (
         <div className={Style.right}>
+          {proxy && (
+            <span className={Style.proxy} title={`${t('httpProxy')}: ${proxy}`}>
+              <span className="icon-browser" />
+              {t('httpProxy')}: {proxy}
+            </span>
+          )}
           {deviceInfo.model && (
             <span className={Style.item}>
               <span className="icon-phone" />
