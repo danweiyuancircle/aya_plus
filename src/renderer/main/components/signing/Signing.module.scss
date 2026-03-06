@@ -3,16 +3,18 @@
 .body {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: calc(100% - 31px);
-  padding: 20px;
+  padding: 30px 20px;
   overflow-y: auto;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 600px;
+  gap: 14px;
+  width: 100%;
+  max-width: 560px;
 }
 
 .field {
@@ -81,12 +83,14 @@
 
 .actions {
   display: flex;
+  justify-content: center;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 .sign-btn {
   height: 32px;
+  min-width: 120px;
   padding: 0 24px;
   border: none;
   border-radius: 4px;
@@ -121,7 +125,9 @@
 }
 
 .signature-info {
-  max-width: 600px;
+  width: 100%;
+  max-width: 560px;
+  margin-top: 8px;
 }
 
 .info-item {
@@ -129,7 +135,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 0;
+  padding: 8px 0;
 }
 
 .info-item + .info-item {
@@ -153,8 +159,9 @@
 
 .source-toggle {
   display: flex;
+  justify-content: center;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .source-btn {

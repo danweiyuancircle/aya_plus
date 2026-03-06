@@ -79,6 +79,9 @@ const signApk: IpcSignApk = async function (
   ]
 
   const { stdout, stderr, code } = await spawnJava(args)
+  console.log('[signApk] exit code:', code)
+  console.log('[signApk] stdout:', stdout)
+  console.log('[signApk] stderr:', stderr)
   if (code !== 0) {
     const errMsg = trim(stderr) || trim(stdout) || 'Sign failed'
     throw new Error(errMsg)
