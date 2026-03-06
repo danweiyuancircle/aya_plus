@@ -1,5 +1,8 @@
 import { BrowserWindow } from 'electron'
 import * as window from 'share/main/lib/window'
+import once from 'licia/once'
+import { handleEvent } from 'share/main/lib/util'
+import { IpcSetRemoteAlwaysOnTop } from 'common/types'
 
 let win: BrowserWindow | null = null
 
@@ -8,6 +11,8 @@ export function showWin() {
     win.focus()
     return
   }
+
+  initIpc()
 
   win = window.create({
     name: 'remote',
@@ -25,6 +30,16 @@ export function showWin() {
 
   window.loadPage(win, { page: 'remote' })
 }
+
+const initIpc = once(() => {
+  handleEvent('setRemoteAlwaysOnTop', <IpcSetRemoteAlwaysOnTop>((
+    alwaysOnTop
+  ) => {
+    if (win) {
+      win.setAlwaysOnTop(alwaysOnTop)
+    }
+  }))
+})
 
 export function closeWin() {
   if (win) {

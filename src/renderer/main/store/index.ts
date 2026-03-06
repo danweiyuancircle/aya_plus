@@ -12,7 +12,6 @@ import { installPackages, setMainStore } from '../../lib/util'
 import { setMemStore } from 'share/renderer/lib/util'
 import isEmpty from 'licia/isEmpty'
 import { IDevice } from 'common/types'
-
 class Store extends BaseStore {
   devices: IDevice[] = []
   device: IDevice | null = null

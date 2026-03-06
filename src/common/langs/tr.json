@@ -237,5 +237,16 @@
   "setProxy": "Ayarla",
   "clearProxy": "Temizle",
   "proxySet": "Proxy ayarlandı",
-  "proxyCleared": "Proxy temizlendi"
+  "proxyCleared": "Proxy temizlendi",
+  "capture": "Capture",
+  "startCapture": "Start Capture",
+  "stopCapture": "Stop Capture",
+  "exportPcap": "Export PCAP",
+  "capturing": "Capturing...",
+  "captureFilter": "Filter (e.g. port 80, host 192.168.1.1)",
+  "packetCount": "{{count}} packets",
+  "captureSize": "Size: {{size}}",
+  "captureStopped": "Capture stopped",
+  "captureExported": "PCAP file exported to {{path}}",
+  "tcpdumpNotFound": "tcpdump not found on device, root may be required"
 }

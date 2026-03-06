@@ -42,7 +42,10 @@ An enhanced fork of [AYA](https://github.com/liriliri/aya) — Android ADB deskt
 * **Color-coded log levels**: Logcat log level dropdown colors match the log output for quick visual identification.
 * **Proxy status indicator**: When an HTTP proxy is set on the device, a warning badge is displayed in the status bar for easy awareness.
 * **Status bar app actions**: Quick actions (clear data, restart) for the current foreground app in the status bar.
-* **Update checker**: Auto-checks for new versions via GitHub Releases with status bar indicator and one-click download.
+* **Update checker**: Auto-checks for new versions on startup via GitHub Releases and prompts to download with a dialog.
+* **About dialog**: Displays app icon and version information.
+* **Network packet capture**: Capture network traffic on-device via tcpdump with filter support and PCAP export.
+* **Remote controller pin**: "Always on Top" toggle for the remote controller window.
 
 ## Download
 

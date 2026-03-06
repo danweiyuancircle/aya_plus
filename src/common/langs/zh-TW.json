@@ -235,5 +235,16 @@
   "setProxy": "設置",
   "clearProxy": "清除",
   "proxySet": "代理已設置",
-  "proxyCleared": "代理已清除"
+  "proxyCleared": "代理已清除",
+  "capture": "抓包",
+  "startCapture": "開始抓包",
+  "stopCapture": "停止抓包",
+  "exportPcap": "匯出 PCAP",
+  "capturing": "抓包中...",
+  "captureFilter": "過濾器（如 port 80, host 192.168.1.1）",
+  "packetCount": "{{count}} 個資料包",
+  "captureSize": "大小：{{size}}",
+  "captureStopped": "抓包已停止",
+  "captureExported": "PCAP 檔案已匯出至 {{path}}",
+  "tcpdumpNotFound": "裝置上未找到 tcpdump，可能需要 root 權限"
 }

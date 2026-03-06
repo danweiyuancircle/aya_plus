@@ -25,6 +25,7 @@ const TV_KEY = {
 
 export default function App() {
   const [deviceId, setDeviceId] = useState('')
+  const [pinned, setPinned] = useState(false)
 
   useEffect(() => {
     async function init() {
@@ -55,9 +56,24 @@ export default function App() {
     }
   }
 
+  function togglePin() {
+    const next = !pinned
+    setPinned(next)
+    main.setRemoteAlwaysOnTop(next)
+  }
+
   return (
     <div className={Style.container}>
       <div className={Style.remote}>
+        <div className={Style.pinRow}>
+          <button
+            className={`${Style.pinBtn} ${pinned ? Style.pinActive : ''}`}
+            title={t('alwaysOnTop')}
+            onClick={togglePin}
+          >
+            <span className="icon-pin" />
+          </button>
+        </div>
         <div className={Style.topRow}>
           <button
             className={Style.btn}

@@ -1,10 +1,8 @@
 import { observer } from 'mobx-react-lite'
 import { useState, useEffect, useRef } from 'react'
 import { t } from 'common/util'
-import Modal from 'luna-modal'
 import Style from './StatusBar.module.scss'
 import store from '../../store'
-import { useCheckUpdate, UpdateInfo } from 'share/renderer/lib/hooks'
 
 interface IDeviceInfo {
   model: string
@@ -16,12 +14,7 @@ export default observer(function StatusBar() {
   const [activity, setActivity] = useState({ packageName: '', activityName: '' })
   const [deviceInfo, setDeviceInfo] = useState<IDeviceInfo | null>(null)
   const [proxy, setProxy] = useState('')
-  const [updateInfo, setUpdateInfo] = useState<UpdateInfo | null>(null)
   const timerRef = useRef<ReturnType<typeof setInterval>>()
-
-  useCheckUpdate((info: UpdateInfo) => {
-    setUpdateInfo(info)
-  })
 
   const device = store.device
 
@@ -96,31 +89,6 @@ export default observer(function StatusBar() {
     }
   }
 
-  async function handleUpdate() {
-    if (!updateInfo) return
-    const content = [
-      `**${t('updateCurrentVersion')}:** ${updateInfo.currentVersion}`,
-      `**${t('updateNewVersion')}:** ${updateInfo.newVersion}`,
-      '',
-      updateInfo.releaseNotes
-        ? `**${t('updateReleaseNotes')}:**\n${updateInfo.releaseNotes}`
-        : '',
-      '',
-      `_${t('updateHint')}_`,
-    ]
-      .filter(Boolean)
-      .join('\n')
-
-    const result = await Modal.confirm(content, {
-      title: t('updateAvailable'),
-      confirmText: t('updateDownload'),
-      cancelText: t('cancel'),
-    })
-    if (result) {
-      main.openExternal(updateInfo.downloadUrl)
-    }
-  }
-
   if (!device) return null
 
   const pkg = activity.packageName
@@ -157,16 +125,6 @@ export default observer(function StatusBar() {
         )}
       </div>
       <div className={Style.right}>
-        {updateInfo && (
-          <span
-            className={Style.update}
-            onClick={handleUpdate}
-            title={`${t('updateAvailable')}: v${updateInfo.newVersion}`}
-          >
-            <span className="icon-arrow-up" />
-            v{updateInfo.newVersion}
-          </span>
-        )}
         {deviceInfo && (
           <>
             {proxy && (

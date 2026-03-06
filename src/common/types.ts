@@ -71,6 +71,7 @@ export enum TransferType {
 export type IpcGetFps = (deviceId: string, pkg: string) => Promise<number>
 export type IpcGetDevices = () => Promise<IDevice[]>
 export type IpcSetScreencastAlwaysOnTop = (alwaysOnTop: boolean) => void
+export type IpcSetRemoteAlwaysOnTop = (alwaysOnTop: boolean) => void
 export type IpcListForwards = (
   deviceId: string
 ) => Promise<Array<{ local: string; remote: string }>>
@@ -180,4 +181,13 @@ export type IpcGetHttpProxy = (deviceId: string) => Promise<string>
 export type IpcSetHttpProxy = (
   deviceId: string,
   proxy: string
+) => Promise<void>
+export type IpcStartCapture = (
+  deviceId: string,
+  filter?: string
+) => Promise<string>
+export type IpcStopCapture = (captureId: string) => Promise<void>
+export type IpcExportCapture = (
+  captureId: string,
+  filePath: string
 ) => Promise<void>

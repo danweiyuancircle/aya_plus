@@ -10,11 +10,32 @@ import Webview from './components/webview/Webview'
 import Application from './components/application/Application'
 import File from './components/file/File'
 import Layout from './components/layout/Layout'
+import Capture from './components/capture/Capture'
 import Style from './App.module.scss'
 import { useState, PropsWithChildren, FC } from 'react'
 import store from './store'
 import { observer } from 'mobx-react-lite'
+import { useCheckUpdate, UpdateInfo } from 'share/renderer/lib/hooks'
+import Modal from 'luna-modal'
+import { t } from 'common/util'
+
+async function showUpdateDialog(info: UpdateInfo) {
+  const content = `${t('updateNewVersion')}: v${info.newVersion}\n${t('updateHint')}`
+
+  const result = await Modal.confirm(content, {
+    title: t('updateAvailable'),
+    confirmText: t('updateDownload'),
+    cancelText: t('cancel'),
+  })
+  if (result) {
+    main.openExternal(info.downloadUrl)
+  }
+}
+
 export default observer(function App() {
+  useCheckUpdate((info: UpdateInfo) => {
+    showUpdateDialog(info)
+  })
 
   return (
     <>
@@ -55,6 +76,9 @@ export default observer(function App() {
             </Panel>
             <Panel panel="layout">
               <Layout />
+            </Panel>
+            <Panel panel="capture">
+              <Capture />
             </Panel>
           </div>
         </div>

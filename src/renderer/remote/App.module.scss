@@ -16,6 +16,34 @@
   width: 100%;
 }
 
+.pin-row {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.pin-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  &:hover {
+    background: var(--color-fill-secondary);
+  }
+}
+
+.pin-active {
+  color: var(--color-primary);
+  background: var(--color-fill-secondary);
+}
+
 .top-row,
 .nav-row {
   display: flex;

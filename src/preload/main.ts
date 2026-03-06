@@ -10,6 +10,7 @@ import {
   IpcDisconnectDevice,
   IpcDumpWindowHierarchy,
   IpcEnablePackage,
+  IpcExportCapture,
   IpcForward,
   IpcGetAvds,
   IpcGetDevices,
@@ -39,7 +40,10 @@ import {
   IpcReverse,
   IpcReverseTcp,
   IpcScreencap,
+  IpcSetRemoteAlwaysOnTop,
   IpcSetScreencastAlwaysOnTop,
+  IpcStartCapture,
+  IpcStopCapture,
   IpcStartAvd,
   IpcStartPackage,
   IpcStartScrcpy,
@@ -64,6 +68,9 @@ export default Object.assign(mainObj, {
   setDevicesStore: invoke<IpcSetStore>('setDevicesStore'),
   setScreencastAlwaysOnTop: invoke<IpcSetScreencastAlwaysOnTop>(
     'setScreencastAlwaysOnTop'
+  ),
+  setRemoteAlwaysOnTop: invoke<IpcSetRemoteAlwaysOnTop>(
+    'setRemoteAlwaysOnTop'
   ),
   getSettingsStore: invoke<IpcGetStore>('getSettingsStore'),
   setSettingsStore: invoke<IpcSetStore>('setSettingsStore'),
@@ -130,4 +137,7 @@ export default Object.assign(mainObj, {
   getHttpProxy: invoke('getHttpProxy'),
   setHttpProxy: invoke('setHttpProxy'),
   getFileUrl: invoke<IpcGetFileUrl>('getFileUrl'),
+  startCapture: invoke<IpcStartCapture>('startCapture'),
+  stopCapture: invoke<IpcStopCapture>('stopCapture'),
+  exportCapture: invoke<IpcExportCapture>('exportCapture'),
 })

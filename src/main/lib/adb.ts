@@ -30,6 +30,7 @@ import * as file from './adb/file'
 import * as fps from './adb/fps'
 import * as webview from './adb/webview'
 import * as port from './adb/port'
+import * as capture from './adb/capture'
 import { getCpuLoads, getCpus, getCpuTemperature } from './adb/cpu'
 import log from 'share/common/log'
 import {
@@ -142,7 +143,8 @@ async function setFontScale(deviceId: string, scale: number) {
 
 async function getHttpProxy(deviceId: string) {
   const result = await shell(deviceId, 'settings get global http_proxy')
-  return result === 'null' ? '' : trim(result)
+  const trimmed = trim(result)
+  return trimmed === 'null' || trimmed === ':0' ? '' : trimmed
 }
 
 async function setHttpProxy(deviceId: string, proxy: string) {
@@ -429,6 +431,7 @@ export async function init() {
   fps.init()
   webview.init()
   port.init(client)
+  capture.init(client)
 
   handleEvent('getDevices', getDevices)
   handleEvent('getOverview', getOverview)

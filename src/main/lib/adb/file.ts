@@ -231,6 +231,7 @@ const readDir: IpcReadDir = async function (deviceId, path) {
   const files: any[] = await device.readdir(path)
 
   const ret: any[] = []
+  let hasFiles = false
   for (let i = 0, len = files.length; i < len; i++) {
     const file = files[i]
     const item: IFile = {
@@ -244,9 +245,32 @@ const readDir: IpcReadDir = async function (deviceId, path) {
       item.size = file.size
       const ext = splitPath(file.name).ext
       item.mime = mime(ext.slice(1))
+      hasFiles = true
     }
 
     ret.push(item)
+  }
+
+  // Use sta2 (64-bit) to get accurate sizes for large files (>4GB)
+  if (hasFiles) {
+    try {
+      const sync = await (await client.getDevice(deviceId)).syncService()
+      try {
+        for (const item of ret) {
+          if (!item.directory) {
+            const filePath = path.endsWith('/')
+              ? path + item.name
+              : path + '/' + item.name
+            const stat = await sync.sta2(filePath)
+            item.size = Number(stat.sizeBig)
+          }
+        }
+      } finally {
+        sync.end()
+      }
+    } catch {
+      // sta2 not supported, keep 32-bit sizes from readdir
+    }
   }
 
   return ret
@@ -419,13 +443,28 @@ const statFile: IpcStatFile = async function (deviceId, path) {
   }
 
   const device = await client.getDevice(deviceId)
-  const stat = await device.stat(path)
-
-  return {
-    size: stat.size,
-    mtime: new Date(stat.mtimeMs),
-    directory: !stat.isFile(),
-    mode: stat.mode,
+  try {
+    const sync = await device.syncService()
+    try {
+      const stat = await sync.sta2(path)
+      return {
+        size: Number(stat.sizeBig),
+        mtime: new Date(stat.mtimeMs),
+        directory: !stat.isFile(),
+        mode: stat.mode,
+      }
+    } finally {
+      sync.end()
+    }
+  } catch {
+    // Fallback to 32-bit stat for older ADB servers
+    const stat = await device.stat(path)
+    return {
+      size: stat.size,
+      mtime: new Date(stat.mtimeMs),
+      directory: !stat.isFile(),
+      mode: stat.mode,
+    }
   }
 }
 
