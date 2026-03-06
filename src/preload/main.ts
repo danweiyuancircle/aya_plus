@@ -12,6 +12,7 @@ import {
   IpcEnablePackage,
   IpcExportCapture,
   IpcForward,
+  IpcGetInstalledAppSignature,
   IpcGetAvds,
   IpcGetDevices,
   IpcGetFileUrl,
@@ -42,6 +43,7 @@ import {
   IpcReverseTcp,
   IpcScreencap,
   IpcSetRemoteAlwaysOnTop,
+  IpcSignApk,
   IpcSetScreencastAlwaysOnTop,
   IpcStartCapture,
   IpcStopCapture,
@@ -52,6 +54,7 @@ import {
   IpcStopAvd,
   IpcStopPackage,
   IpcUninstallPackage,
+  IpcVerifyApk,
   IpcWipeAvdData,
   IpcWriteShell,
 } from 'common/types'
@@ -142,4 +145,9 @@ export default Object.assign(mainObj, {
   startCapture: invoke<IpcStartCapture>('startCapture'),
   stopCapture: invoke<IpcStopCapture>('stopCapture'),
   exportCapture: invoke<IpcExportCapture>('exportCapture'),
+  signApk: invoke<IpcSignApk>('signApk'),
+  verifyApk: invoke<IpcVerifyApk>('verifyApk'),
+  getInstalledAppSignature: invoke<IpcGetInstalledAppSignature>(
+    'getInstalledAppSignature',
+  ),
 })

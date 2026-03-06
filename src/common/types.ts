@@ -195,3 +195,28 @@ export type IpcGetPackagePermissions = (
   deviceId: string,
   pkg: string,
 ) => Promise<string[]>
+export interface ISignatureInfo {
+  schemeVersion: string
+  subject: string
+  issuer: string
+  validFrom: string
+  validUntil: string
+  md5: string
+  sha1: string
+  sha256: string
+}
+export type IpcSignApk = (
+  apkPath: string,
+  keystorePath: string,
+  keystorePass: string,
+  keyAlias: string,
+  keyPass: string,
+  outputPath: string,
+  v1Enabled: boolean,
+  v2Enabled: boolean,
+) => Promise<void>
+export type IpcVerifyApk = (apkPath: string) => Promise<ISignatureInfo>
+export type IpcGetInstalledAppSignature = (
+  deviceId: string,
+  packageName: string,
+) => Promise<ISignatureInfo>

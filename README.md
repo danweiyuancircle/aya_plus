@@ -47,6 +47,7 @@ An enhanced fork of [AYA](https://github.com/liriliri/aya) — Android ADB deskt
 * **Network packet capture**: Capture network traffic on-device via tcpdump with filter support and PCAP export.
 * **Remote controller pin**: "Always on Top" toggle for the remote controller window.
 * **App permissions viewer**: View app permissions in the package info dialog — accessible from both the application manager and a new info button in the status bar for the current foreground app.
+* **APK signing**: New Signing tab for re-signing APK files with custom keystores (V1/V2/V1+V2 scheme selection) and viewing signature details of local APKs or installed apps.
 
 ## Download
 

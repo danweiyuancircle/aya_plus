@@ -31,6 +31,7 @@ import * as fps from './adb/fps'
 import * as webview from './adb/webview'
 import * as port from './adb/port'
 import * as capture from './adb/capture'
+import * as signing from './signing'
 import { getCpuLoads, getCpus, getCpuTemperature } from './adb/cpu'
 import log from 'share/common/log'
 import {
@@ -57,7 +58,7 @@ const getDevices: IpcGetDevices = async function () {
   let devices = await client.listDevices()
   devices = filter(
     devices,
-    (device: Device) => device.type === 'emulator' || device.type === 'device'
+    (device: Device) => device.type === 'emulator' || device.type === 'device',
   )
 
   return Promise.all(
@@ -78,7 +79,7 @@ const getDevices: IpcGetDevices = async function () {
         androidVersion: properties['ro.build.version.release'],
         sdkVersion: properties['ro.build.version.sdk'],
       }
-    })
+    }),
   ).catch(() => [])
 }
 
@@ -125,7 +126,7 @@ async function getIpAndMac(deviceId: string) {
     ip = ipMatch[1]
   }
   const macMatch = wlan0.match(
-    /link\/ether (([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))/
+    /link\/ether (([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2}))/,
   )
   if (macMatch) {
     mac = macMatch[1]
@@ -432,6 +433,7 @@ export async function init() {
   webview.init()
   port.init(client)
   capture.init(client)
+  signing.init()
 
   handleEvent('getDevices', getDevices)
   handleEvent('getOverview', getOverview)

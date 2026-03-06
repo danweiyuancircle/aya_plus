@@ -18,6 +18,7 @@ export default observer(function Panels() {
       'screenshot',
       'logcat',
       'capture',
+      'signing',
       'webview',
     ],
     (panel) => {
@@ -29,7 +30,7 @@ export default observer(function Panels() {
           selected={panel === store.panel}
         />
       )
-    }
+    },
   )
 
   return (

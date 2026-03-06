@@ -11,6 +11,7 @@ import Application from './components/application/Application'
 import File from './components/file/File'
 import Layout from './components/layout/Layout'
 import Capture from './components/capture/Capture'
+import Signing from './components/signing/Signing'
 import Style from './App.module.scss'
 import { useState, PropsWithChildren, FC } from 'react'
 import store from './store'
@@ -80,6 +81,9 @@ export default observer(function App() {
             <Panel panel="capture">
               <Capture />
             </Panel>
+            <Panel panel="signing">
+              <Signing />
+            </Panel>
           </div>
         </div>
       )}
@@ -91,29 +95,29 @@ interface IPanelProps {
   panel: string
 }
 
-const Panel: FC<PropsWithChildren<IPanelProps>> = observer(function Panel(
-  props
-) {
-  const [used, setUsed] = useState(false)
+const Panel: FC<PropsWithChildren<IPanelProps>> = observer(
+  function Panel(props) {
+    const [used, setUsed] = useState(false)
 
-  let visible = false
+    let visible = false
 
-  if (store.panel === props.panel) {
-    if (!used) {
-      setUsed(true)
+    if (store.panel === props.panel) {
+      if (!used) {
+        setUsed(true)
+      }
+      visible = true
     }
-    visible = true
-  }
 
-  const style: React.CSSProperties = {}
-  if (!visible) {
-    style.opacity = 0
-    style.pointerEvents = 'none'
-  }
+    const style: React.CSSProperties = {}
+    if (!visible) {
+      style.opacity = 0
+      style.pointerEvents = 'none'
+    }
 
-  return (
-    <div className={Style.panel} style={style}>
-      {used ? props.children : null}
-    </div>
-  )
-})
+    return (
+      <div className={Style.panel} style={style}>
+        {used ? props.children : null}
+      </div>
+    )
+  },
+)

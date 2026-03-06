@@ -1,0 +1,183 @@
+@use '../../../theme' as theme;
+
+.body {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 31px);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 600px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.field label {
+  min-width: 140px;
+  font-size: #{theme.$font-size}px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.field input {
+  flex: 1;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg-container);
+  color: var(--color-text);
+  font-size: #{theme.$font-size}px;
+  outline: none;
+  &:focus {
+    border-color: var(--color-primary);
+  }
+}
+
+.field select {
+  flex: 1;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg-container);
+  color: var(--color-text);
+  font-size: #{theme.$font-size}px;
+  outline: none;
+}
+
+.file-btn {
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg-container);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: #{theme.$font-size}px;
+  white-space: nowrap;
+  &:hover {
+    background: var(--color-fill-secondary);
+  }
+}
+
+.file-path {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: #{theme.$font-size}px;
+  color: var(--color-text-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.sign-btn {
+  height: 32px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 4px;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  font-size: #{theme.$font-size}px;
+  &:hover {
+    opacity: 0.9;
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.result {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: #{theme.$font-size}px;
+}
+
+.success {
+  background: var(--color-success-bg, rgba(82, 196, 26, 0.1));
+  color: var(--color-success, #52c41a);
+}
+
+.error {
+  background: rgba(255, 77, 79, 0.1);
+  color: #ff4d4f;
+}
+
+.signature-info {
+  max-width: 600px;
+}
+
+.info-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.info-item + .info-item {
+  border-top: 1px solid var(--color-border);
+}
+
+.info-label {
+  font-size: #{theme.$font-size}px;
+  color: var(--color-text);
+  min-width: 120px;
+}
+
+.info-value {
+  flex: 1;
+  text-align: right;
+  font-size: #{theme.$font-size}px;
+  color: var(--color-text-secondary);
+  word-break: break-all;
+  padding-left: 20px;
+}
+
+.source-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.source-btn {
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg-container);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: #{theme.$font-size}px;
+  &:hover {
+    background: var(--color-fill-secondary);
+  }
+}
+
+.source-btn-active {
+  border-color: var(--color-primary);
+  background: var(--color-primary-bg, rgba(22, 119, 255, 0.1));
+  color: var(--color-primary);
+}
+
+.hint {
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+}

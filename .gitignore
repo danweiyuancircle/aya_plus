@@ -3,6 +3,7 @@ dist/
 release/
 resources/*
 !resources/aya.dex
+!resources/apksigner.jar
 package-lock.json
 
 .gradle/
